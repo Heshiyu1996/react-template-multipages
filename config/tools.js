@@ -32,7 +32,7 @@ const getEntry = () => {
     let entry = {};
     glob.sync(path.resolve(paths.appSrc, 'view/**/index.js')).forEach(function(fileDir) {
         let pathObj = path.parse(fileDir);
-        let entryName = pathObj.dir.match(/\/\w+$/g)[0].split('/')[1]; // 用文件夹名字作为入口名。
+        let entryName = pathObj.dir.match(/\/[\w-]+$/g)[0].split('/')[1]; // 用文件夹名字作为入口名。
         entry[entryName] = fileDir;
     });
     return entry;
