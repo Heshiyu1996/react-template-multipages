@@ -1,8 +1,8 @@
-# webpack-learning
+# react-template-multipages
 
 ## 简介
 
-这是Netease Ehr团队研制的一款**基于 React + Webpack**的前端项目脚手架。
+这是一款**基于 React + Webpack**基础配置的前端`多页（multiple page application）`项目脚手架。
 
 
 ## 已支持
@@ -14,8 +14,10 @@
 -   [x] HappyPack
 -   [x] DLL 动态链接库
 -   [x] CDN下载依赖（lodash、moment）
+-   [x] webpack 多入口配置
+-   [x] react-router v4（BrowserRouter）
 
-未来还可能进行`webpack 多入口配置`、`TypeScript支持`等
+未来还可能进行`TypeScript支持`等
 
 ## 使用方式
 1、安装依赖包
@@ -132,6 +134,11 @@ project
     -   将lodash、moment从打包范围移除
     -   将antd打包进vendor（仅在开发模式下）
     -   将antd的默认加载图标改为按需加载（src/utils/antd-icon.js）
+
+-   v1.1.1 —— 2019-10-20
+    -   统一改为BrowserRouter（按需引入，参考intro）
+    -   修复`<Routes />`无法传参的bug
+    -   自动扫描入口文件、HTML模板动态生成
 
 ## License
 
