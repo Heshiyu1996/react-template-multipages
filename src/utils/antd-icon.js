@@ -3,4 +3,4 @@
  * webpack alias 添加:
  * {’@ant-design/icons/lib/dist$': path.resolve(__dirname, 'utils/antdIcon.js')}
  */
-export { CheckOutline } from '@ant-design/icons';
+export { CheckOutline, DownSquareOutline, LoadingOutline, DownOutline, SearchOutline } from '@ant-design/icons';
