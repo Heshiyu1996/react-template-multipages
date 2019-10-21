@@ -35,6 +35,7 @@ module.exports = {
     appIndexJs: resolveApp('src/index.js'),
     appSrc: resolveApp('src'),
     appNodeModules: resolveApp('node_modules'),
+    appCss: resolveApp('src/assets/css'),
     publicUrl: getPublicUrl(resolveApp('package.json')),
     servedPath: getServedPath(resolveApp('package.json')),
     antdIcon: resolveApp('src/utils/antd-icon.js')

@@ -27,3 +27,29 @@
 }
 
 .generate-margin-bottom(100);
+
+@font-family-medium: "PingFangSC-Medium", "Microsoft YaHei", Helvetica, Tahoma, Arial,
+    "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+@font-family-regular: "PingFangSC-Regular", "Microsoft YaHei", Helvetica, Tahoma, Arial,
+    "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+
+.font-class(@fontFamily, @fontSize, @fontColor) {
+    font-family: @fontFamily;
+    font-size: @fontSize;
+    color: @fontColor;
+    letter-spacing: 0;
+}
+
+.font-normal(@size: 14px, @color: @dark, @isBold: false) {
+    .font-class(@font-family-medium, @size, @color);
+    & when (@isBold) {
+        font-weight: bold;
+    };
+}
+
+.font-large(@size: 14px, @color: @dark, @isBold: false) {
+    .font-class(@font-family-regular, @size, @color);
+    & when (@isBold) {
+        font-weight: bold;
+    };
+}

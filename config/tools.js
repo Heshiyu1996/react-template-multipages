@@ -1,31 +1,8 @@
-const fs = require('fs');
 const glob = require('glob');
 const path = require('path');
 const paths = require('./paths');
 const env = require('./env');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-// 读取less全局变量至less-loader
-const getLessVariables = fileList => {
-    let variables = {};
-    fileList.forEach(file => {
-        let themeContent = fs.readFileSync(file, 'utf-8');
-        themeContent.split('\n').forEach(function(item) {
-            if (item.startsWith('//') || item.indexOf('/*') > -1) return;
-            let _pair = item.split(':');
-            if (_pair.length < 2) return;
-            let key = _pair[0].replace('\r', '').replace('@', '');
-            if (!key) return;
-            let value = _pair[1]
-                .replace(';', '')
-                .replace('\r', '')
-                .replace(/^\s+|\s+$/g, '')
-                .replace(/(\s*\/\/.*)/g, '');
-            variables[key] = value;
-        });
-    });
-    return variables;
-};
 
 // 动态扫描入口文件
 const getEntry = () => {
@@ -109,7 +86,6 @@ class CleanTerminalPlugin {
 }
 
 module.exports = {
-    getLessVariables,
     getEntry,
     getHtmlWebpackPluginConfigs,
     getRewrites,
