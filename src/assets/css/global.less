@@ -1,0 +1,153 @@
+html {
+    font-size: 100px;
+}
+
+#root {
+    // min-width: 1200px;
+    height: 100%;
+    min-height: 100%;
+}
+
+.ant-layout {
+    min-height: 100%;
+    background: #FFF;
+
+    &-header {
+        line-height: .5rem !important;
+    }
+}
+
+a {
+    color: @link;
+}
+
+.footer {
+    z-index: 101;
+    height: 1.8rem;
+    font-size: 12px;
+    color: #FFF;
+    background: #333;
+
+    & .f-content {
+        height: 100%;
+        padding: 0 .16rem;
+
+        .f-footer-link {
+            margin-top: .32rem;
+            line-height: .22rem;
+
+            a {
+                color: #FFF;
+            }
+        }
+
+        .f-footer-des {
+            line-height: .22rem;
+            color: #FFF;
+            opacity: .65;
+
+            a {
+                color: #FFF;
+            }
+        }
+
+        .f-footer-code {
+            p {
+                margin-top: 10px;
+                color: #FFF;
+                opacity: .8;
+            }
+        }
+    }
+}
+
+.ant-popover-placement-bottomLeft {
+    width: 100%;
+}
+
+.ant-menu-vertical {
+    width: 100% !important;
+}
+
+.ant-menu-vertical .ant-menu-item,
+.ant-menu-vertical-left .ant-menu-item,
+.ant-menu-vertical-right .ant-menu-item,
+.ant-menu-inline .ant-menu-item,
+.ant-menu-vertical .ant-menu-submenu-title,
+.ant-menu-vertical-left .ant-menu-submenu-title,
+.ant-menu-vertical-right .ant-menu-submenu-title,
+.ant-menu-inline .ant-menu-submenu-title {
+    font-size: 12px !important;
+}
+
+.ant-card-head-title {
+    padding: 30px 0 16px 0 !important;
+    font-size: 16px !important;
+}
+
+// Alert提示组件样式
+.ant-alert.ant-alert-warning {
+    background-color: #FFF;
+    border: none;
+    box-shadow: 1px 1px 5px 2px #F1F1F1;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #D4D4D4;
+}
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+}
+
+/* 设置滚动到顶部的层级 */
+.ant-back-top {
+    z-index: 999 !important;
+}
+
+// 常用的less语句块
+.f-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    white-space: nowrap;
+}
+
+.f-cp {
+    cursor: pointer;
+}
+
+.f-tac {
+    text-align: center;
+}
+
+// 常用字体颜色
+.f-success {
+    color: @success;
+}
+
+.f-warning {
+    color: @warning;
+}
+
+.f-danger {
+    color: @danger;
+}
+
+.f-link {
+    color: @link;
+}
