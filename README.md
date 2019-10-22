@@ -144,6 +144,9 @@ project
     -   引入style-resources-loader & 移除方法getLessVariables
     -   支持Less Parametric Mixins（带参数的混合：.font-normal）
 
+-   v1.1.3 —— 2019-10-22
+    -   在入口文件index.js中引入全局less
+
 ## License
 
 The code is distributed under the [MIT](https://opensource.org/licenses/MIT) license
