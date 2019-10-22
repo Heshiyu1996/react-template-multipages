@@ -1,5 +1,6 @@
 @import "global.less";
-@import "function.less";
 @import "animate.less";
 
-/* antd-reset.less、variables.less这两个文件会自动导入到less-loader的modifyVars中 */
+/* 只能导出css文件 */
+
+/* antd-reset.less、variables.less、function.less这三类“less语法文件”会在预处理阶段就提前通过style-resources-loader导入 */
