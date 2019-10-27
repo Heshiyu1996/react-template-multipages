@@ -147,6 +147,10 @@ project
 -   v1.1.3 —— 2019-10-22
     -   在入口文件index.js中引入全局less
 
+-   v1.1.4 —— 2019-10-27
+    -   移除国际化配置
+    -   修复iconfont无效问题
+
 ## License
 
 The code is distributed under the [MIT](https://opensource.org/licenses/MIT) license
