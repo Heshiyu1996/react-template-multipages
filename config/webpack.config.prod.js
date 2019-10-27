@@ -15,6 +15,7 @@ const paths = require('./paths');
 const webpackConfig = smp.wrap(
     merge(baseWebpackConfig, {
         mode: 'production',
+        devtool: 'cheap-module-source-map',
         output: {
             path: paths.appBuild,
             filename: 'static/js/[name].[chunkhash:8].js',
@@ -40,6 +41,47 @@ const webpackConfig = smp.wrap(
                 },
                 {
                     oneOf: [
+                        {
+                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            loader: require.resolve('url-loader'),
+                            options: {
+                                limit: 10000,
+                                name: 'static/media/[name].[hash:8].[ext]'
+                            }
+                        },
+                        {
+                            test: /\.less$/,
+                            use: [
+                                MiniCssExtractPlugin.loader,
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        importLoaders: 2,
+                                        sourceMap: sourceMapEnabled
+                                    }
+                                },
+                                require.resolve('postcss-loader'),
+                                {
+                                    loader: require.resolve('less-loader'),
+                                    options: {
+                                        sourceMap: sourceMapEnabled,
+                                        javascriptEnabled: true
+                                    }
+                                },
+                                {
+                                    loader: 'style-resources-loader',
+                                    options: {
+                                        patterns: [
+                                            path.resolve(paths.appCss, 'variables.less'),
+                                            path.resolve(paths.appCss, 'antd-reset.less'),
+                                            path.resolve(paths.appCss, 'function.less')
+                                        ],
+                                        injector: 'append'
+                                    }
+                                }
+                            ],
+                            sideEffects: true
+                        },
                         {
                             test: /\.(js|jsx)$/,
                             include: paths.appSrc,
@@ -70,6 +112,13 @@ const webpackConfig = smp.wrap(
                             exclude: /node_modules/,
                             include: paths.appSrc,
                             use: [MiniCssExtractPlugin.loader, require.resolve('css-loader')]
+                        },
+                        {
+                            exclude: [/\.(js|jsx)$/, /\.html$/, /\.json$/],
+                            loader: require.resolve('file-loader'),
+                            options: {
+                                name: 'static/media/[name].[hash:8].[ext]'
+                            }
                         }
                     ]
                 }

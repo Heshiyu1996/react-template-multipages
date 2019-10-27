@@ -10,7 +10,7 @@ const paths = require('./paths');
 const webpackConfig = merge(baseWebpackConfig, {
     mode: 'development',
     cache: true,
-    devtool: 'source-map',
+    devtool: 'cheap-module-eval-source-map',
     resolve: {
         alias: {
             'react-dom': '@hot-loader/react-dom'
@@ -34,6 +34,47 @@ const webpackConfig = merge(baseWebpackConfig, {
             {
                 oneOf: [
                     {
+                        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                        loader: require.resolve('url-loader'),
+                        options: {
+                            limit: 10000,
+                            name: 'static/media/[name].[hash:8].[ext]'
+                        }
+                    },
+                    {
+                        test: /\.less$/,
+                        use: [
+                            require.resolve('style-loader'),
+                            {
+                                loader: require.resolve('css-loader'),
+                                options: {
+                                    importLoaders: 2,
+                                    sourceMap: false
+                                }
+                            },
+                            require.resolve('postcss-loader'),
+                            {
+                                loader: require.resolve('less-loader'),
+                                options: {
+                                    sourceMap: false,
+                                    javascriptEnabled: true
+                                }
+                            },
+                            {
+                                loader: 'style-resources-loader',
+                                options: {
+                                    patterns: [
+                                        path.resolve(paths.appCss, 'variables.less'),
+                                        path.resolve(paths.appCss, 'antd-reset.less'),
+                                        path.resolve(paths.appCss, 'function.less')
+                                    ],
+                                    injector: 'append'
+                                }
+                            }
+                        ],
+                        sideEffects: true
+                    },
+                    {
                         test: /\.(js|jsx)$/,
                         include: paths.appSrc,
                         exclude: /node_modules/,
@@ -44,6 +85,13 @@ const webpackConfig = merge(baseWebpackConfig, {
                         exclude: /node_modules/,
                         include: paths.appSrc,
                         use: 'happypack/loader?id=happyCSS'
+                    },
+                    {
+                        exclude: [/\.(js|jsx)$/, /\.html$/, /\.json$/],
+                        loader: require.resolve('file-loader'),
+                        options: {
+                            name: 'static/media/[name].[hash:8].[ext]'
+                        }
                     }
                 ]
             }

@@ -25,61 +25,7 @@ module.exports = {
     },
     module: {
         strictExportPresence: true,
-        rules: [
-            { parser: { requireEnsure: false } },
-            {
-                oneOf: [
-                    {
-                        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-                        loader: require.resolve('url-loader'),
-                        options: {
-                            limit: 10000,
-                            name: 'static/media/[name].[hash:8].[ext]'
-                        }
-                    },
-                    {
-                        test: /\.less$/,
-                        use: [
-                            isProduction ? MiniCssExtractPlugin.loader : require.resolve('style-loader'),
-                            {
-                                loader: require.resolve('css-loader'),
-                                options: {
-                                    importLoaders: 2,
-                                    sourceMap: sourceMapEnabled
-                                }
-                            },
-                            require.resolve('postcss-loader'),
-                            {
-                                loader: require.resolve('less-loader'),
-                                options: {
-                                    sourceMap: sourceMapEnabled,
-                                    javascriptEnabled: true
-                                }
-                            },
-                            {
-                                loader: 'style-resources-loader',
-                                options: {
-                                    patterns: [
-                                        path.resolve(paths.appCss, 'variables.less'),
-                                        path.resolve(paths.appCss, 'antd-reset.less'),
-                                        path.resolve(paths.appCss, 'function.less')
-                                    ],
-                                    injector: 'append'
-                                }
-                            }
-                        ],
-                        sideEffects: true
-                    },
-                    {
-                        exclude: [/\.(js|jsx)$/, /\.html$/, /\.json$/],
-                        loader: require.resolve('file-loader'),
-                        options: {
-                            name: 'static/media/[name].[hash:8].[ext]'
-                        }
-                    }
-                ]
-            }
-        ]
+        rules: [{ parser: { requireEnsure: false } }]
     },
     plugins: [
         // 动态生成html模板插件配置

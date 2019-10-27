@@ -7,6 +7,7 @@ function Header(props) {
     return (
         <div className="m-header">
             Header导航：
+            <i className="icon-hebingxingzhuang1 icon iconfont"></i>
             <Button href="/">Home</Button>
             <Button href="/intro.html">Intro</Button>
         </div>
