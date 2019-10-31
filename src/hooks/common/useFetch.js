@@ -6,7 +6,7 @@
  * isLoading：true-请求中 false-请求结束
  * dispatch：手动触发请求
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /**
  * @param {fuction} url 请求方法
@@ -39,7 +39,7 @@ const useFetch = (url, params, isImmediately = true) => {
      * 手动触发接口请求
      * @param {obj} value 手动触发请求时可直接传入请求参数，否则取默认参数
      */
-    const dispatch = (value = params) => fetch(url, value);
+    const dispatch = useCallback((value = params) => fetch(url, value), [params, url]);
 
     useEffect(() => {
         isImmediately && fetch(url, params);

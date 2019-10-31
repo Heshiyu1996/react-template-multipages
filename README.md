@@ -151,6 +151,9 @@ project
     -   移除国际化配置
     -   修复iconfont无效问题
 
+-   v1.1.5 —— 2019-10-31
+    -   修复useFetch中dispatch依赖重新定义问题
+
 ## License
 
 The code is distributed under the [MIT](https://opensource.org/licenses/MIT) license
