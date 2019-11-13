@@ -26,7 +26,8 @@ const getHtmlWebpackPluginConfigs = () => {
             chunks: ['vendor', 'common', entryName],
             favicon: paths.appFavicon,
             templateParameters: {
-                AntdDllSlot: !env.isProduction ? `<script src="./../../vendor/antd.dll.js"></script>` : ''
+                AntdDllSlot: !env.isProduction ? `<script src="/vendor/antd.dll.js"></script>` : '',
+                ReactDllSlot: !env.isProduction ? `<script src="/vendor/react.dll.js"></script>` : ''
             },
             ...(env.isProduction
                 ? {

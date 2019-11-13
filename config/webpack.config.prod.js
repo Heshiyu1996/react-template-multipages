@@ -11,6 +11,7 @@ const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const smp = new SpeedMeasurePlugin();
 const baseWebpackConfig = require('./webpack.base');
 const paths = require('./paths');
+const { sourceMapEnabled } = require('./env');
 
 const webpackConfig = smp.wrap(
     merge(baseWebpackConfig, {
@@ -20,7 +21,7 @@ const webpackConfig = smp.wrap(
             path: paths.appBuild,
             filename: 'static/js/[name].[chunkhash:8].js',
             chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
-            publicPath: paths.servedPath,
+            publicPath: '/',
             devtoolModuleFilenameTemplate: info => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/')
         },
         module: {
@@ -186,7 +187,7 @@ const webpackConfig = smp.wrap(
                     parallel: true,
                     // Enable file caching
                     cache: true,
-                    sourceMap: false
+                    sourceMap: true
                 }),
                 // This is only used in production mode
                 new OptimizeCSSAssetsPlugin({
