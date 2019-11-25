@@ -1,7 +1,6 @@
 /**
  * component参数说明：
- * 写法1、React Element；（非懒加载，不推荐）
- * 写法2、Function: () => import(path/to/component)；（懒加载）
+ * Function: () => import(path/to/component)；（懒加载）
  */
 
 const routes = {

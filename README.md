@@ -159,6 +159,9 @@ project
     -   配置Axios中rootURL在生产环境下调用的api为绝对路径
     -   引入data-wrapper通用业务组件（可复用页面空态）
 
+-   v1.1.7 —— 2019-11-25
+    -   移除addLoadable，所有路由组件改为懒加载（IE无法通过component.name区分）
+
 
 ## License
 
