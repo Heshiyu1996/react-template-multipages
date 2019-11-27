@@ -6,15 +6,15 @@
  *         2、在需要使用渲染出口的父组件中使用<Routes {...props} />。（注：顶层App.js无需传props）
  *
  * 三个内部方法：
+ * @function lazy 将路由组件设为懒加载
  * @function findRoute 根据path，查找包括目标路由在内，及其上下级路由的信息；
  * @function getEntryName 获取当前入口信息（多页应用使用）
- * @function addLoadable 进行组件的懒加载加工
  *
  * 两个暴露方法：
  * @function getSubList 获取当前路由的子路由列表信息
  * @function Routes 渲染出口生成
  *
- * @date 2019-10-17
+ * @date 2019-11-25
  */
 
 import React from 'react';
