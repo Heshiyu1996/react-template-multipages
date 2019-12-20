@@ -46,10 +46,10 @@ service.interceptors.response.use(
  * @param data      接口参数（注：get后续将放入“含有params的对象”才能接到url；delete后续将放入“含有data属性的对象”才能通过payload传输）
  * @param headers   接口所需header配置
  */
-export const get = ({ url, data, headers }) => response(service.get(url, { params: data }, headers));
-export const post = ({ url, data, headers }) => response(service.post(url, data, headers));
-export const put = ({ url, data, headers }) => response(service.put(url, data, headers));
-export const del = ({ url, data, headers }) => response(service.delete(url, { data }, headers));
+export const get = ({ url, data, headers }) => response(service.get(url, { params: data, headers }));
+export const post = ({ url, data, headers }) => response(service.post(url, data, { headers }));
+export const put = ({ url, data, headers }) => response(service.put(url, data, { headers }));
+export const del = ({ url, data, headers }) => response(service.delete(url, { data, headers }));
 
 const response = axiosObj => axiosObj.then(res => res.data).catch(err => errHandle(err));
 

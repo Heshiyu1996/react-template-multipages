@@ -162,6 +162,9 @@ project
 -   v1.1.7 —— 2019-11-25
     -   移除addLoadable，所有路由组件改为懒加载（IE无法通过component.name区分）
 
+-   v1.1.8 —— 2019-12-20
+    -   四类请求方式传入headers无效问题
+
 
 ## License
 
